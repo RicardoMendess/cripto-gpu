@@ -15,7 +15,7 @@ export class CrImputComponent implements OnInit, OnChanges {
   onFile($event: Event) {
     if($event.currentTarget != null) {
       $event.preventDefault();
-      this.crInputFacade.manipulateEventFile($event);
+      this.crInputFacade.manipulateEventFile($event)
     }
   }
 
