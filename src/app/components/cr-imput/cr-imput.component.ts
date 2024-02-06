@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
 import { CrInputFacade } from '../../services/cr-input.facade';
 
 @Component({
@@ -8,12 +8,13 @@ import { CrInputFacade } from '../../services/cr-input.facade';
   templateUrl: './cr-imput.component.html',
   styleUrl: './cr-imput.component.css'
 })
-export class CrImputComponent implements OnInit, OnChanges {
+export class CrImputComponent implements OnInit, OnChanges, OnDestroy {
 
   crInputFacade = inject(CrInputFacade);
 
   onFile($event: Event) {
     if($event.currentTarget != null) {
+      debugger;
       $event.preventDefault();
       this.crInputFacade.manipulateEventFile($event);
     }
@@ -25,5 +26,9 @@ export class CrImputComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
 
+  }
+
+  ngOnDestroy(): void {
+      this.onFile;
   }
 }
