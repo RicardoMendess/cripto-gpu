@@ -1,6 +1,7 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { first, map, of, take } from "rxjs";
 import { ToBase64 } from "../shared/file";
+import { GpuFacade } from "./gpu.facade";
 
 @Injectable(
   {
@@ -8,17 +9,16 @@ import { ToBase64 } from "../shared/file";
   }
 )
 export class CrInputFacade {
+  readonly gpuFacade = inject(GpuFacade);
+
   async manipulateEventFile(event: Event) {
     const target = event.currentTarget as HTMLInputElement;
 
     if(target.files != null || target.files != undefined) {
       const fileForTransfer = target.files[0];
 
-      debugger;
-
       await ToBase64(fileForTransfer).then(
         (result) => {
-          debugger;
           const base64 = result;
         }
       );
