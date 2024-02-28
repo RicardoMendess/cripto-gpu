@@ -1,7 +1,6 @@
 import { Injectable, inject } from "@angular/core";
 import { first, map, of, take } from "rxjs";
 import { ToBase64 } from "../shared/file";
-import { GpuFacade } from "./gpu.facade";
 
 @Injectable(
   {
@@ -9,7 +8,6 @@ import { GpuFacade } from "./gpu.facade";
   }
 )
 export class CrInputFacade {
-  readonly gpuFacade = inject(GpuFacade);
 
   async manipulateEventFile(event: Event) {
     const target = event.currentTarget as HTMLInputElement;
